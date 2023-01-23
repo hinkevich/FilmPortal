@@ -1,0 +1,761 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FilmPortal</name>
+    </assembly>
+    <members>
+        <member name="T:FilmPortal.Controllers.ActorsController">
+            <summary>
+            CRUD Methods for Actors.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.#ctor(FilmPortal.Models.Repo.IActorsRepository,Microsoft.Extensions.Logging.ILogger{FilmPortal.Controllers.ActorsController})">
+            <summary>
+            Constructor. 
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.GetActors">
+            <summary>
+            Returns list all actors, without list of films.
+            </summary>
+            <remarks> <b>Return: </b>Positive result: Returns all actors; Negative result: Not Found;
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.GetActor(System.Int32)">
+            <summary>
+            Returns Actor by. Includes list of films.
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns actor; Negative result: Not Found;
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.PutActor(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Changes actor by Id.
+            </summary>
+            <remarks><b>Return: </b>Positive result: No content; Negative result: Not Found or Bad Request;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.CreateFreeActor(FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Add new actor without bindiing with film.
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns actor; Negative result: Problem;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.AddActorToFilm(System.Int32,System.Int32)">
+            <summary>
+            Binds actor with film by Id.
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns actor; Negative result: Not Found;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.CreateActorAndBindWithFilm(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Add new actor, who is binded with having film.
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns actor; Negative result: Not Found or Problem;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.ActorsController.DeleteActor(System.Int32)">
+            <summary>
+            Delete actor by Id.
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns No content; Negative result: Not Found;
+            </remarks>
+        </member>
+        <member name="T:FilmPortal.Controllers.ErrorController">
+            <summary>
+            Exeption Handling for production and other enviroments (Development is exepted)
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Controllers.ErrorController.HandleError">
+            <summary>
+            Exeption action
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ErrorController.Throw">
+            <summary>
+            Metod for checking HandleError().
+            </summary>
+            <remarks>
+            - Change Development enviroment on other.
+            - Comment atribute "ApiExploreSetting"
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Controllers.FilmsController">
+            <summary>
+            Implements CRUD shema for Film
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.#ctor(FilmPortal.Models.Repo.IFilmsRepository,Microsoft.Extensions.Logging.ILogger{FilmPortal.Controllers.FilmsController})">
+            <summary>
+            Constructor for FilmsController
+            </summary>
+            <param name="repository">IFilmRepository</param>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.GetFilms">
+            <summary>
+            Returns All films
+            </summary>
+            <remarks><b>Return: </b>Positive result: Returns All films; Negative result: Not Found;
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.GetFilm(System.Int32)">
+            <summary>
+            Returns film by Id
+            </summary>
+            <param name="id">Route parameter</param>
+            <remarks><b>Return: </b>Positive result: Returns films; Negative result: Not Found;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.PutFilm(System.Int32,FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Update film by Id
+            </summary>
+            <param name="id"> film Id</param>
+            <param name="filmDto"> - DTO object for to change film.</param>
+            <remarks><b>Return: </b>Positive result: No Content; Negative result: Not Found or Bad request;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.PostFilm(FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Add new film.
+            </summary>
+            <param name="filmDto">DTO object for film.</param>
+            <remarks><b>Return: </b>Positive result: CreatedAction "GetFilm"; Negative result: Problem;
+            </remarks>
+        </member>
+        <member name="M:FilmPortal.Controllers.FilmsController.DeleteFilm(System.Int32)">
+            <summary>
+            Delete film by Id
+            </summary>
+            <param name="id"></param>
+            <remarks><b>Return: </b>Positive result: No Content; Negative result: Not Found;
+            </remarks>
+        </member>
+        <member name="T:FilmPortal.Controllers.ReviewsController">
+            <summary>
+            This controller works with film's review. He includes CRUD methods.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.#ctor(FilmPortal.Models.Repo.IReviewRepositiry,Microsoft.Extensions.Logging.ILogger{FilmPortal.Controllers.ReviewsController})">
+            <summary>
+            Constructor for ReviewsController. 
+            </summary>
+            <param name="repository">IreviewRepository</param>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.GetReviews(System.Int32)">
+            <summary>
+            Returns all reviews by film Id.
+            </summary>
+            <param name="filmId"> - Film Id, it is query parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.GetReview(System.Int32)">
+            <summary>
+            Returns one review by Id.
+            </summary>
+            <param name="id"> - part of route.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.PutReview(System.Int32,FilmPortal.Models.ReviewDto)">
+            <summary>
+            Changes review by Id.
+            </summary>
+            <param name="id"> - part of route.</param>
+            <param name="reviewDto"> - query parameter. Dto jbject.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.PostReview(FilmPortal.Models.ReviewDto)">
+            <summary>
+            Add review.
+            </summary>
+            <param name="reviewDto"> - Dto object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Controllers.ReviewsController.DeleteReview(System.Int32)">
+            <summary>
+            Delete review by Id.
+            </summary>
+            <param name="id"> - part of route.</param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:FilmPortal.Migrations.ActorFilmRelationship">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.ActorFilmRelationship.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.ActorFilmRelationship.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmPortal.Migrations.ActorFilmRelationship.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:FilmPortal.Models.ActorCreateDto">
+            <summary>
+            DTO object for making actor.
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ActorCreateDto.FirstName">
+            <summary>
+            Firstname, Length from 1 to 150.
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ActorCreateDto.LastName">
+            <summary>
+            LastName, Length from 1 to 150.
+            </summary>
+        </member>
+        <member name="T:FilmPortal.Models.Data.SeedData">
+            <summary>
+            Add some data to database for testing
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.Data.SeedData.ComletionDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Data.SeedData.EnsurePopolate(Microsoft.AspNetCore.Builder.WebApplication)">
+            <summary>
+            Check data base. If db is emty, add some data to db.
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:FilmPortal.Models.FilmCreateDto">
+            <summary>
+            DTO object to add a movie. 
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.FilmCreateDto.Title">
+            <summary>
+            Movie title.
+            </summary>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.ECActorsRepositiry">
+            <summary>
+            Class for working with DbContext for ActorsController. Pattern Repository.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.#ctor(FilmsPortal.Models.FilmsPortalDbContext)">
+            <summary>
+            Constructor. Gets DbContext.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.ECActorsRepositiry.Actors">
+            <summary>
+            Returns list of actors as Iqueryble.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.BindActorWithFilm(System.Int32,System.Int32)">
+            <summary>
+            Bind Actor with Film.
+            </summary>
+            <param name="filmId"></param>
+            <param name="actorId"></param>
+            <returns></returns>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException"></exception>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.CreateAndBindActorWithFilm(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Create new actor and add relationship with film.
+            </summary>
+            <param name="filmId"></param>
+            <param name="actorDto"></param>
+            <returns></returns>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException"></exception>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.CreateFreeActor(FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Add new actor to Db.
+            </summary>
+            <param name="actorDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.DeleteActor(System.Int32)">
+            <summary>
+            Delete Actor from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.GetActor(System.Int32)">
+            <summary>
+            Returns Actor by. Include list of films.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.GetAllActors">
+            <summary>
+            Returns list of actors.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECActorsRepositiry.UpdateActor(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            Changes actor.
+            </summary>
+            <param name="id"></param>
+            <param name="actorDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.ECFilmRepository">
+            <summary>
+            Class for working with Dbcontext for FilmsController. Pattern Repository.
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.ECFilmRepository.Films">
+            <summary>
+            Returns list of films as Iqueryble.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.#ctor(FilmsPortal.Models.FilmsPortalDbContext)">
+            <summary>
+            Constructor. Gets DbContext.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.AddFilm(FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Add film to Db.
+            </summary>
+            <param name="filmDto"></param>
+            <returns></returns>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException"></exception>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.DeleteFilm(System.Int32)">
+            <summary>
+            Delete film from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.GetAllFilms">
+            <summary>
+            Returns all films from Db.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.GetFilmById(System.Int32)">
+            <summary>
+            Returns film from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECFilmRepository.UpdateFilm(System.Int32,FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Change film in Db.
+            </summary>
+            <param name="id"></param>
+            <param name="filmDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.ECReviewRepositiry">
+            <summary>
+            Class for working with DbContext for ReviewsController. Pattern Repository.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.#ctor(FilmsPortal.Models.FilmsPortalDbContext)">
+            <summary>
+            Constructor. Gets DbContext.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.ECReviewRepositiry.Reviews">
+            <summary>
+            Returns list of reviews as Iqueryble.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.AddReview(FilmPortal.Models.ReviewDto)">
+            <summary>
+            Add review to Db.
+            </summary>
+            <param name="reviewDto"></param>
+            <returns></returns>
+            <exception cref="T:System.Threading.Tasks.TaskCanceledException"></exception>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.DeleteReview(System.Int32)">
+            <summary>
+            Delete review from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.GetAllReviews(System.Int32)">
+            <summary>
+            Returns all review for film from Db.
+            </summary>
+            <param name="filmId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.GetReviewById(System.Int32)">
+            <summary>
+            Returns review by Id from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.ECReviewRepositiry.UpdateReview(System.Int32,FilmPortal.Models.ReviewDto)">
+            <summary>
+            Changes review in Db.
+            </summary>
+            <param name="id"></param>
+            <param name="reviewDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.IActorsRepository">
+            <summary>
+            Interfece realizes repository pattern for ActorsController
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.IActorsRepository.Actors">
+            <summary>
+            Demand to return all Actors.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.GetAllActors">
+            <summary>
+            Demand to return all actors for async method.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.GetActor(System.Int32)">
+            <summary>
+            Demand returnone actor for async method.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.UpdateActor(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="actorDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.CreateFreeActor(FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            
+            </summary>
+            <param name="actorDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.BindActorWithFilm(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="filmId"></param>
+            <param name="actorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.CreateAndBindActorWithFilm(System.Int32,FilmPortal.Models.ActorCreateDto)">
+            <summary>
+            
+            </summary>
+            <param name="filmId"></param>
+            <param name="actorDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IActorsRepository.DeleteActor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.IFilmsRepository">
+            <summary>
+            Interfece realizes repository pattern for FilmController
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.IFilmsRepository.Films">
+            <summary>
+            Demands to return all film as IQueryble.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IFilmsRepository.GetAllFilms">
+            <summary>
+            Demands to return all film as IEnumerable.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IFilmsRepository.GetFilmById(System.Int32)">
+            <summary>
+            Demands to return film by Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IFilmsRepository.AddFilm(FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Demand to add film.
+            </summary>
+            <param name="film"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IFilmsRepository.DeleteFilm(System.Int32)">
+            <summary>
+            demands to delete film by Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IFilmsRepository.UpdateFilm(System.Int32,FilmPortal.Models.FilmCreateDto)">
+            <summary>
+            Demands to change film.
+            </summary>
+            <param name="id"></param>
+            <param name="film"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.Repo.IReviewRepositiry">
+            <summary>
+            Interfece realizes repository pattern for FilmController
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.Repo.IReviewRepositiry.Reviews">
+            <summary>
+            Demands to return all reviews as IQueryble.
+            </summary>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IReviewRepositiry.GetAllReviews(System.Int32)">
+            <summary>
+             Demands to return all reviews as IEnumerable.
+            </summary>
+            <param name="filmId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IReviewRepositiry.GetReviewById(System.Int32)">
+            <summary>
+            Returns review by Id from Db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IReviewRepositiry.AddReview(FilmPortal.Models.ReviewDto)">
+            <summary>
+            Add review to Db.
+            </summary>
+            <param name="reviewDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IReviewRepositiry.DeleteReview(System.Int32)">
+            <summary>
+            Delete review from db.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FilmPortal.Models.Repo.IReviewRepositiry.UpdateReview(System.Int32,FilmPortal.Models.ReviewDto)">
+            <summary>
+            Changes review in Db.
+            </summary>
+            <param name="id"></param>
+            <param name="reviewDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FilmPortal.Models.ReviewDto">
+            <summary>
+            DTO object for creating review.
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ReviewDto.Title">
+            <summary>
+            Review's title, min lenght: 1, max lenght: 150;
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ReviewDto.Description">
+            <summary>
+            Description, min lenght 2, min lenght: 2, max lenght: 450;
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ReviewDto.FilmId">
+            <summary>
+            Foreign key 
+            </summary>
+        </member>
+        <member name="P:FilmPortal.Models.ReviewDto.Stars">
+            <summary>
+            Quality assessment parameter. From 0 to 4.
+            </summary>
+            <remarks>
+            0 : One Star;
+            1 : Two Stars; 
+            2 : Three Stars; 
+            3 : Four Stars; 
+            4 : Five Stars; 
+            </remarks>
+        </member>
+        <member name="T:FilmsPortalWebAPI.Models.Actor">
+            <summary>
+            Model Db for actor
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Actor.Id">
+            <summary>
+            Id 
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Actor.FirstName">
+            <summary>
+            Firstname, Length from 1 to 150.
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Actor.LastName">
+            <summary>
+            LastName, Length from 1 to 150.
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Actor.Films">
+            <summary>
+            Navigation property, relationship: many to many.
+            </summary>
+        </member>
+        <member name="T:FilmsPortalWebAPI.Models.Film">
+            <summary>
+            Model class Film
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Film.Id">
+            <summary>
+            Film Id
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Film.Title">
+            <summary>
+            Name of film
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Film.Reviews">
+            <summary>
+            Navigation property, relationship: one to many.
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Film.Actors">
+            <summary>
+            Navigation property, relationship: many to many.
+            </summary>
+        </member>
+        <member name="T:FilmsPortalWebAPI.Models.FilmStars">
+             <summary>
+             Enum includes constants for rating films
+             </summary>
+            
+        </member>
+        <member name="F:FilmsPortalWebAPI.Models.FilmStars.oneStar">
+            <summary>
+            One star, int value: 0.
+            </summary>
+        </member>
+        <member name="F:FilmsPortalWebAPI.Models.FilmStars.twoStars">
+            <summary>
+            One star, int value: 1.
+            </summary>
+        </member>
+        <member name="F:FilmsPortalWebAPI.Models.FilmStars.threeStars">
+            <summary>
+            One star, int value: 2.
+            </summary>
+        </member>
+        <member name="F:FilmsPortalWebAPI.Models.FilmStars.fourStars">
+            <summary>
+            One star, int value: 3.
+            </summary>
+        </member>
+        <member name="F:FilmsPortalWebAPI.Models.FilmStars.fiveStars">
+            <summary>
+            One star, int value: 4.
+            </summary>
+        </member>
+        <member name="T:FilmsPortalWebAPI.Models.Review">
+            <summary>
+            Model for review
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.ReviewId">
+            <summary>
+            ReviewId
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.Title">
+            <summary>
+            Review's title, min lenght: 1, max lenght: 150;
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.Description">
+            <summary>
+            Description, min lenght 2, min lenght: 2, max lenght: 450;
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.Stars">
+            <summary>
+            Quality assessment parameter. From 0 to 4.
+            </summary>
+            <remarks>
+            0 : One Star;
+            1 : Two Stars; 
+            2 : Three Stars; 
+            3 : Four Stars; 
+            4 : Five Stars; 
+            </remarks>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.Film">
+            <summary>
+            Navigation property, relationship: one to many.
+            </summary>
+        </member>
+        <member name="P:FilmsPortalWebAPI.Models.Review.FilmId">
+            <summary>
+            Foreign key 
+            </summary>
+        </member>
+        <member name="T:FilmsPortal.Models.FilmsPortalDbContext">
+            <summary>
+            DbContext
+            </summary>
+        </member>
+        <member name="M:FilmsPortal.Models.FilmsPortalDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{FilmsPortal.Models.FilmsPortalDbContext})">
+            <summary>
+            Constructor for  FilmsPortalDbContext.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:FilmsPortal.Models.FilmsPortalDbContext.Films">
+            <summary>
+            DbSet for films.
+            </summary>
+        </member>
+        <member name="P:FilmsPortal.Models.FilmsPortalDbContext.Reviews">
+            <summary>
+            DbSet for Reviews.
+            </summary>
+        </member>
+        <member name="P:FilmsPortal.Models.FilmsPortalDbContext.Actors">
+            <summary>
+            DbSet for Actors.
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            For integration tests
+            </summary>
+        </member>
+    </members>
+</doc>

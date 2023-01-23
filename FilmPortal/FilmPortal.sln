@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmPortal", "FilmPortal.csproj", "{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmPortal.Tests", "..\FilmPortal.Tests\FilmPortal.Tests.csproj", "{BCAEB6F3-BDFF-4782-9D5E-8DF1B23871B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35} = {62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CC5E1A3-9D28-4EA1-88BB-14273B520668}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A0AA17-D4F6-4536-9EFF-6688A0EB9C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCAEB6F3-BDFF-4782-9D5E-8DF1B23871B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCAEB6F3-BDFF-4782-9D5E-8DF1B23871B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCAEB6F3-BDFF-4782-9D5E-8DF1B23871B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCAEB6F3-BDFF-4782-9D5E-8DF1B23871B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD8CC80A-EDB3-4629-A174-2B8720EAA1BD}
+	EndGlobalSection
+EndGlobal

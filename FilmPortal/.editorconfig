@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0240: Remove redundant nullable directive
+dotnet_diagnostic.IDE0240.severity = silent
