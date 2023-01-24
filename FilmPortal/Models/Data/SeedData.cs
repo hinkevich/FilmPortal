@@ -26,90 +26,64 @@ namespace FilmPortal.Models.Data
             {
                 context.Database.Migrate();
             }
-            //if (!context.Films.Any())
-            //{
-            //    context.Films.AddRange(
-            //        new Film
-            //        {
-            //            Title = "Titanic",
-            //            Actors = new[]
-            //           {
-            //               new Actor
-            //               {
-            //                   FirstName = "Leonardo",
-            //                   LastName = "Dicaprio",
-            //               },
-            //                new Actor
-            //               {
-            //                   FirstName = "Kate",
-            //                   LastName = "Winslet",
-            //               }
-            //           },
-            //            Reviews = new[] 
-            //            {
-            //                new Review
-            //                {
-            //                    Title = "Titanic",
-            //                    Description = "It's norm film",
-            //                    Stars = FilmStars.fourStars
-            //                },
-            //                new Review
-            //                {
-            //                    Title = "Titanic",
-            //                    Description = "Not bad",
-            //                    Stars = FilmStars.threeStars,
-            //                },
-            //                new Review
-            //                {
-            //                    Title = "Titanic",
-            //                    Description = "Very good",
-            //                    Stars = FilmStars.fiveStars,
-            //                },
 
-            //            }
-            //        },
-            //        new Film
-            //        {
-            //            Title = "Terminator",
-            //            Actors = new[]
-            //           {
-            //               new Actor
-            //               {
-            //                   FirstName = "Arnold",
-            //                   LastName = "Schwarzenegger",
-            //               },
-            //                new Actor
-            //               {
-            //                   FirstName = "Linda",
-            //                   LastName = "Hamilton",
-            //               },
-                           
-            //           },
-            //            Reviews = new[]
-            //            {
-            //                new Review
-            //                {
-            //                    Description = "It's classic",
-            //                    Title = "Terminator",
-            //                    Stars = FilmStars.fourStars
-            //                },
-            //                new Review
-            //                {
-            //                    Title = "Terminator",
-            //                    Description = "I was shocked",
-            //                    Stars = FilmStars.fiveStars,
-            //                },
-            //                new Review
-            //                {
-            //                    Title = "Terminator",
-            //                    Description = "Arny is very young",
-            //                    Stars = FilmStars.fiveStars,
-            //                },
-            //            }
-            //        } 
-            //        );
-            //    context.SaveChanges();
-            //}
+            if (!context.Films.Any()||!context.Actors.Any())
+            {
+
+                var actorOne = new Actor
+                {
+                    FirstName = "Leonardo",
+                    LastName = "Dicaprio",
+                };
+                var actorTwo = new Actor
+                {
+                    FirstName = "Leonardo",
+                    LastName = "Dicaprio",
+                };
+                var filmOne = new Film
+                {
+                    Title = "Titanic"
+                };
+
+                var actorThree = new Actor
+                {
+                    FirstName = "Arnold",
+                    LastName = "Schwarzenegger",
+                };
+                var actorFour = new Actor
+                {
+                    FirstName = "Linda",
+                    LastName = "Hamilton",
+                };
+                var filmTwo = new Film
+                {
+                    Title = "Terminator"
+                };
+
+                context.Films.Add(filmOne);
+                context.Films.Add(filmTwo);
+                context.SaveChanges();
+                context.Actors.Add(actorOne);
+                context.Actors.Add(actorTwo);
+                context.Actors.Add(actorThree);
+                context.Actors.Add(actorFour);
+                context.SaveChanges();
+                
+                actorOne = context.Actors.FirstOrDefault(a=>a.Id==1);
+                actorTwo = context.Actors.FirstOrDefault(a => a.Id == 2);
+                actorThree = context.Actors.FirstOrDefault(a => a.Id==3);
+                actorFour = context.Actors.FirstOrDefault(a => a.Id==4);
+
+                filmOne = context.Films.FirstOrDefault(a => a.Id == 1);
+                filmTwo = context.Films.FirstOrDefault(a => a.Id == 2);
+
+                filmOne!.Actors.Add(actorOne!);
+                filmOne.Actors.Add(actorTwo!);
+                filmTwo!.Actors.Add(actorThree!);
+                filmTwo.Actors.Add(actorFour!);
+                
+                context.SaveChanges();
+            }
         }
     }
 }

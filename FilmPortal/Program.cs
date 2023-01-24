@@ -68,7 +68,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//SeedData.EnsurePopolate(app);
+SeedData.EnsurePopolate(app);
 
 app.Run();
 
